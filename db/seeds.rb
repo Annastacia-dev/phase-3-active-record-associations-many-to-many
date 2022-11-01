@@ -15,8 +15,16 @@ puts "🌱 Seeding data..."
     Review.create(
       score: rand(1..10),
       comment: Faker::Lorem.sentence,
+      user_id: rand(1..50),
       game_id: game.id # use the ID (primary key) of the game as the foreign key
     )
+
+    # create between 1 and 10 users for each review
+    rand(1..10).times do
+      User.create(
+        name: Faker::Name.name,
+      )
+    end
   end
 end
 
